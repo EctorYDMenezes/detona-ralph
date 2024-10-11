@@ -7,11 +7,21 @@ const state = {
     },
     values: {
         timerID: null,
+        countDownTimeId: setInterval(countDown, 1000),
         gameVelocity: 1000,
         hitPosition: 0,
         results: 0,
+        currentTime: 10,
     },
 };
+
+function countDown(){
+    state.values.currentTime--;
+    state.view.timeLeft.textContent = state.values.currentTime;
+    if(state.values.currentTime <= 0){
+        alert("Tempo esgotado, você acertou o Ralph " + state.values.results)
+    }
+}
 
 function randomSquare(){
     state.view.squares.forEach((square)=>{
